@@ -54,6 +54,7 @@ public class state {
 	public void moveRight(){
 		condenseRight();
 		addRight();
+		spawnCell();
 	}
 	
 	public void condenseRight(){
@@ -82,6 +83,7 @@ public class state {
 	public void moveLeft(){
 		condenseLeft();
 		addLeft();
+		spawnCell();
 	}
 	
 	public void condenseLeft(){
@@ -95,7 +97,15 @@ public class state {
 	}
 	
 	public void addLeft(){
-		
+		for(int i = 0; i < 5; i++){
+			for(int j = 0; j < 4; j++){
+				if(board.get(i).get(j) == board.get(i).get(j+1) && board.get(i).get(j) != 0){
+					board.get(i).set(j, board.get(i).get(j)*2);
+					board.get(i).set(j+1, 0);
+					condenseLeft();
+				}
+			}
+		}
 	}
 	
 	public void moveDown(){
