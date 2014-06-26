@@ -90,6 +90,47 @@ public class state {
 		
 	}
 	
+	public void moveDown(){
+		condenseDown();
+		addDown();
+	}
+	
+	public void condenseDown(){
+		ArrayList<Integer> tempCollum;
+		for(int i = 0; i < 5; i++){
+			tempCollum = new ArrayList<Integer>();
+			for(int j = 0; j < 5; j++){
+				tempCollum.add(board.get(j).get(i));
+			}
+			for(int j = 0; j < 5; j++){
+				if(tempCollum.get(j) == 0){
+					tempCollum.remove(j);
+					tempCollum.add(0, 0);
+				}
+			}
+			for(int j = 0; j < 5; j++){
+				board.get(j).set(i, tempCollum.get(j));
+			}
+		}
+	}
+	
+	public void addDown(){
+		
+	}
+	
+	public void moveUp(){
+		condenseUp();
+		addUp();
+	}
+	
+	public void condenseUp(){
+		
+	}
+	
+	public void addUp(){
+		
+	}
+	
 	public ArrayList<ArrayList<Integer>> getBoard(){
 		return board;
 	}
