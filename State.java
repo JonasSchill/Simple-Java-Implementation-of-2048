@@ -68,7 +68,15 @@ public class state {
 	}
 	
 	public void addRight(){
-		
+		for(int i = 0; i < 5; i++){
+			for(int j = 4; j > 0; j--){
+				if(board.get(i).get(j) == board.get(i).get(j-1) && board.get(i).get(j) != 0){
+					board.get(i).set(j, board.get(i).get(j)*2);
+					board.get(i).remove(j-1);
+					board.get(i).add(0, 0);
+				}
+			}
+		}
 	}
 	
 	public void moveLeft(){
