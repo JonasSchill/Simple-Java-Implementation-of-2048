@@ -176,7 +176,23 @@ public class state {
 	}
 	
 	public void addUp(){
-		
+		ArrayList<Integer> tempCollum;
+		for(int i = 0; i < 5; i++){
+			tempCollum = new ArrayList<Integer>();
+			for(int j = 0; j < 5; j++){
+				tempCollum.add(board.get(j).get(i));
+			}
+			for(int j = 0; j < 4; j++){
+				if(tempCollum.get(j) == tempCollum.get(j+1) && tempCollum.get(j) != 0){
+					tempCollum.set(j, tempCollum.get(j)*2);
+					tempCollum.set(j+1, 0);
+					condenseUp();
+				}
+			}
+			for(int j = 0; j < 5; j++){
+				board.get(j).set(i, tempCollum.get(j));
+			}
+		}
 	}
 	
 	public ArrayList<ArrayList<Integer>> getBoard(){
