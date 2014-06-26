@@ -124,7 +124,21 @@ public class state {
 	}
 	
 	public void condenseUp(){
-		
+		ArrayList<Integer> tempCollum;
+		for(int i = 0; i < 5; i++){
+			tempCollum = new ArrayList<Integer>();
+			for(int j = 0; j < 5; j++){
+				tempCollum.add(board.get(j).get(i));
+			}
+			tempCollum.removeAll(Collections.singleton(0));
+			int tempSize = tempCollum.size();
+			for(int j = tempSize; j < 5; j++){
+				tempCollum.add(j, 0);
+			}
+			for(int j = 0; j < 5; j++){
+				board.get(j).set(i, tempCollum.get(j));
+			}
+		}
 	}
 	
 	public void addUp(){
