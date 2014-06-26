@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
+import java.util.Scanner;
 
 public class state {
 	private ArrayList<ArrayList<Integer>> board;
@@ -8,6 +9,7 @@ public class state {
 	public state(){
 	board = new ArrayList<ArrayList<Integer>>();
 	setUp();
+	input();
 	}
 	
 	public void setUp(){
@@ -32,6 +34,7 @@ public class state {
 		} else {
 			board.get(cord[0]).set(cord[1], 4);
 		}
+		printBoard();
 	}
 	
 	public int[] getRandomEmptyCord(){
@@ -46,6 +49,11 @@ public class state {
 					tempCord[1] = j;
 					emptyCords.add(tempCord);
 				}
+			}
+		}
+		if(emptyCords.size() == 0){
+			while(true){
+				System.out.println("GAME OVER");
 			}
 		}
 		return emptyCords.get(randomGenerator.nextInt(emptyCords.size()));
@@ -111,6 +119,7 @@ public class state {
 	public void moveDown(){
 		condenseDown();
 		addDown();
+		spawnCell();
 	}
 	
 	public void condenseDown(){
@@ -155,6 +164,7 @@ public class state {
 	public void moveUp(){
 		condenseUp();
 		addUp();
+		spawnCell();
 	}
 	
 	public void condenseUp(){
@@ -197,6 +207,31 @@ public class state {
 	
 	public ArrayList<ArrayList<Integer>> getBoard(){
 		return board;
+	}
+	
+	public void input(){
+		Scanner reader = new Scanner(System.in);
+		while(true){
+			if(reader.nextInt() == 1){
+				moveLeft();
+			} else if(reader.nextInt() == 2){
+				moveDown();
+			} else if(reader.nextInt() == 3){
+				moveRight();
+			} else if(reader.nextInt() == 4){
+				moveUp();
+			}
+		}
+	}
+	
+	public void printBoard(){
+		for(int i = 0; i < 5; i++){
+			System.out.println("");
+			for(int j = 0; j < 5; j++){
+				System.out.print(board.get(i).get(j));
+			}
+		}
+		System.out.println("\n");
 	}
 
 }
