@@ -12,16 +12,15 @@ public class State{
   public void setUp(){
     //fill board with all 0's
     ArrayList<Integer> tempRow;
-		Integer tempCell;
-		for(int i = 0; i < 5; i++){
-			tempRow = new ArrayList<Integer>();
-			for(int j = 0; j < 5; j++){
-				tempCell = new Integer(0);
-				tempRow.add(tempCell);
-			}
-			board.add(tempRow);
+	Integer tempCell;
+	for(int i = 0; i < 5; i++){
+		tempRow = new ArrayList<Integer>();
+		for(int j = 0; j < 5; j++){
+			tempCell = new Integer(0);
+			tempRow.add(tempCell);
 		}
-		
+		board.add(tempRow);
+	}
     spawnCell();
     spawnCell();
   }
