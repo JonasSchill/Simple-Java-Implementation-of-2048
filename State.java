@@ -133,7 +133,23 @@ public class state {
 	}
 	
 	public void addDown(){
-		
+		ArrayList<Integer> tempCollum;
+		for(int i = 0; i < 5; i++){
+			tempCollum = new ArrayList<Integer>();
+			for(int j = 0; j < 5; j++){
+				tempCollum.add(board.get(j).get(i));
+			}
+			for(int j = 4; j > 0; j--){
+				if(tempCollum.get(j) == tempCollum.get(j-1) && tempCollum.get(j) != 0){
+					tempCollum.set(j, tempCollum.get(j)*2);
+					tempCollum.remove(j-1);
+					tempCollum.add(0, 0);
+				}
+			}
+			for(int j = 0; j < 5; j++){
+				board.get(j).set(i, tempCollum.get(j));
+			}
+		}
 	}
 	
 	public void moveUp(){
