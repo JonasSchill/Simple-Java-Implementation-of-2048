@@ -3,10 +3,10 @@ import java.util.Collections;
 import java.util.Random;
 import java.util.Scanner;
 
-public class state {
+public class State {
 	private ArrayList<ArrayList<Integer>> board;
 	
-	public state(){
+	public State(){
 	board = new ArrayList<ArrayList<Integer>>();
 	setUp();
 	input();
@@ -212,13 +212,17 @@ public class state {
 	public void input(){
 		Scanner reader = new Scanner(System.in);
 		while(true){
-			if(reader.nextInt() == 1){
+			int input = reader.nextInt();
+			if(input == 1){
 				moveLeft();
-			} else if(reader.nextInt() == 2){
+			}
+			if(input == 2){
 				moveDown();
-			} else if(reader.nextInt() == 3){
+			}
+			if(input == 3){
 				moveRight();
-			} else if(reader.nextInt() == 4){
+			}
+			if(input == 4){
 				moveUp();
 			}
 		}
