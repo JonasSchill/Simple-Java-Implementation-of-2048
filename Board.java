@@ -70,7 +70,7 @@ public class Board extends JPanel{
             for(int i = 0; i < 5; i++){
             	for(int j = 0; j < 5; j++){
             		if(board.get(i).get(j) == 8){
-            		        int option = JOptionPane.showConfirmDialog(null, "you win play again?", "you win", JOptionPane.YES_NO_OPTION);
+            		        int option = JOptionPane.showConfirmDialog(null, "You Win! Play Again?", "YOU WIN", JOptionPane.YES_NO_OPTION);
             		       	if(option == 0){
             		      		state = new State();
             		       	} else if(option == 1){
@@ -80,7 +80,7 @@ public class Board extends JPanel{
             	}
             }
             if(state.getRandomEmptyCord().equals(null)){
-            	int option = JOptionPane.showConfirmDialog(null, "you lose play again?", "you lose", JOptionPane.YES_NO_OPTION);
+            	int option = JOptionPane.showConfirmDialog(null, "You Loose! Play Again?", "YOU LOOSE", JOptionPane.YES_NO_OPTION);
 		       	if(option == 0){
 		      		state = new State();
 		       	} else if(option == 1){
