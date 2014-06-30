@@ -14,7 +14,7 @@ public class Window extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(600, 600);
         setLocationRelativeTo(null);
-        setTitle("2048");
+        setTitle("Simple Java Implementation of 2048 by Jonas Schill");
         setResizable(false);
         setVisible(true);
     }
