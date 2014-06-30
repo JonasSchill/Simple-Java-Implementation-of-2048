@@ -50,9 +50,7 @@ public class State {
 			}
 		}
 		if(emptyCords.size() == 0){
-			while(true){
-				System.out.println("GAME OVER");
-			}
+			return null;
 		}
 		return emptyCords.get(randomGenerator.nextInt(emptyCords.size()));
 	}
