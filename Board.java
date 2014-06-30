@@ -69,7 +69,7 @@ public class Board extends JPanel{
             ArrayList<ArrayList<Integer>> board = state.getBoard();
             for(int i = 0; i < 5; i++){
             	for(int j = 0; j < 5; j++){
-            		if(board.get(i).get(j) == 8){
+            		if(board.get(i).get(j) == 2048){
             		        int option = JOptionPane.showConfirmDialog(null, "You Win! Play Again?", "YOU WIN", JOptionPane.YES_NO_OPTION);
             		       	if(option == 0){
             		      		state = new State();
