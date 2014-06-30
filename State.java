@@ -3,6 +3,11 @@ import java.util.Collections;
 import java.util.Random;
 import java.awt.event.KeyEvent;
 
+/**
+ * 
+ * @author Jonas Schill
+ *
+ */
 public class State {
 	private ArrayList<ArrayList<Integer>> board;
 	
