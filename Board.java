@@ -1,6 +1,8 @@
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.Toolkit;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -28,38 +30,44 @@ public class Board extends JPanel{
 
     public void paint(Graphics g) {
         super.paint(g);
-        g.setFont((new Font("TimesRoman", Font.PLAIN, 25)));
+        
+        Graphics2D g2 = (Graphics2D) g;
+        RenderingHints rh = new RenderingHints(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        rh.put(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+        g2.setRenderingHints(rh); 
+        
+        g2.setFont((new Font("Helvetica", Font.BOLD, 25)));
         ArrayList<ArrayList<Integer>> board = state.getBoard();
         
         for(int i = 0; i < 5; i++){
         	for(int j = 0; j < 5; j++){
         		if(board.get(i).get(j) == 2){
-        			g.setColor(Color.DARK_GRAY);
+        			g2.setColor(Color.DARK_GRAY);
         		} else if(board.get(i).get(j) == 4){
-        			g.setColor(Color.GRAY);
+        			g2.setColor(Color.GRAY);
         		} else if(board.get(i).get(j) == 8){
-        			g.setColor(Color.LIGHT_GRAY);
+        			g2.setColor(Color.LIGHT_GRAY);
         		} else if(board.get(i).get(j) == 16){
-        			g.setColor(Color.BLUE);
+        			g2.setColor(Color.BLUE);
         		} else if(board.get(i).get(j) == 32){
-        			g.setColor(Color.CYAN);
+        			g2.setColor(Color.CYAN);
         		} else if(board.get(i).get(j) == 64){
-        			g.setColor(Color.RED);
+        			g2.setColor(Color.RED);
         		} else if(board.get(i).get(j) == 128){
-        			g.setColor(Color.ORANGE);
+        			g2.setColor(Color.ORANGE);
         		} else if(board.get(i).get(j) == 256){
-        			g.setColor(Color.YELLOW);
+        			g2.setColor(Color.YELLOW);
         		} else if(board.get(i).get(j) == 512){
-        			g.setColor(Color.MAGENTA);
+        			g2.setColor(Color.MAGENTA);
         		} else if(board.get(i).get(j) == 1024){
-        			g.setColor(Color.PINK);
+        			g2.setColor(Color.PINK);
         		}
-        		g.drawString(board.get(i).get(j).toString(), j*100+100, i*100+100);
-        		g.setColor(Color.BLACK);
+        		g2.drawString(board.get(i).get(j).toString(), j*100+100, i*100+100);
+        		g2.setColor(Color.BLACK);
         	}
         } 
         Toolkit.getDefaultToolkit().sync();
-        g.dispose();
+        g2.dispose();
     }
 
     private class TAdapter extends KeyAdapter {
@@ -73,17 +81,18 @@ public class Board extends JPanel{
             		        int option = JOptionPane.showConfirmDialog(null, "You Win! Play Again?", "YOU WIN", JOptionPane.YES_NO_OPTION);
             		       	if(option == 0){
             		      		state = new State();
-            		       	} else if(option == 1){
+            		       	} else {
             		       		System.exit(0);
-            		       	}
+            		       	} 
             		}
             	}
             }
-            if(state.getRandomEmptyCord().equals(null)){
-            	int option = JOptionPane.showConfirmDialog(null, "You Loose! Play Again?", "YOU LOOSE", JOptionPane.YES_NO_OPTION);
+            if(state.getRandomEmptyCord() == null){
+            	int option = JOptionPane.showConfirmDialog(null, "Yout Lose! Play Again?", "YOU LOSE", JOptionPane.YES_NO_OPTION);
+            	System.out.println(option);
 		       	if(option == 0){
 		      		state = new State();
-		       	} else if(option == 1){
+		       	} else {
 		       		System.exit(0);
 		       	}
             }
