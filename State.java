@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
-import java.util.Scanner;
+import java.awt.event.KeyEvent;
 
 public class State {
 	private ArrayList<ArrayList<Integer>> board;
@@ -9,7 +9,6 @@ public class State {
 	public State(){
 	board = new ArrayList<ArrayList<Integer>>();
 	setUp();
-	input();
 	}
 	
 	public void setUp(){
@@ -34,7 +33,6 @@ public class State {
 		} else {
 			board.get(cord[0]).set(cord[1], 4);
 		}
-		printBoard();
 	}
 	
 	public int[] getRandomEmptyCord(){
@@ -209,33 +207,24 @@ public class State {
 		return board;
 	}
 	
-	public void input(){
-		Scanner reader = new Scanner(System.in);
-		while(true){
-			int input = reader.nextInt();
-			if(input == 1){
-				moveLeft();
-			}
-			if(input == 2){
-				moveDown();
-			}
-			if(input == 3){
-				moveRight();
-			}
-			if(input == 4){
-				moveUp();
-			}
-		}
-	}
-	
-	public void printBoard(){
-		for(int i = 0; i < 5; i++){
-			System.out.println("");
-			for(int j = 0; j < 5; j++){
-				System.out.print(board.get(i).get(j));
-			}
-		}
-		System.out.println("\n");
-	}
+	public void keyPressed(KeyEvent e) {
+        int key = e.getKeyCode();
+
+        if (key == KeyEvent.VK_LEFT) {
+            moveLeft();
+        }
+
+        if (key == KeyEvent.VK_RIGHT) {
+            moveRight();
+        }
+
+        if (key == KeyEvent.VK_UP) {
+            moveUp();
+        }
+
+        if (key == KeyEvent.VK_DOWN) {
+            moveDown();
+        }
+    }
 
 }
