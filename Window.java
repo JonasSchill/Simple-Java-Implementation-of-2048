@@ -1,7 +1,12 @@
 import javax.swing.JFrame;
 
+/**
+ * 
+ * @author Jonas Schill
+ *
+ */
 public class Window extends JFrame {
-
+	
     public Window() {
 
         add(new Board());
@@ -13,6 +18,8 @@ public class Window extends JFrame {
         setResizable(false);
         setVisible(true);
     }
+    
+    
 
     public static void main(String[] args) {
         new Window();
