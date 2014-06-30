@@ -89,7 +89,6 @@ public class Board extends JPanel{
             }
             if(state.getRandomEmptyCord() == null){
             	int option = JOptionPane.showConfirmDialog(null, "Yout Lose! Play Again?", "YOU LOSE", JOptionPane.YES_NO_OPTION);
-            	System.out.println(option);
 		       	if(option == 0){
 		      		state = new State();
 		       	} else {
