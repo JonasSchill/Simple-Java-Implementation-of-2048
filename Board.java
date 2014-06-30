@@ -4,6 +4,8 @@ import java.awt.Graphics;
 import java.awt.Toolkit;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+
 import javax.swing.JPanel;
 
 public class Board extends JPanel{
@@ -22,10 +24,33 @@ public class Board extends JPanel{
     public void paint(Graphics g) {
         super.paint(g);
         g.setFont((new Font("TimesRoman", Font.PLAIN, 25)));
+        ArrayList<ArrayList<Integer>> board = state.getBoard();
         
         for(int i = 0; i < 5; i++){
         	for(int j = 0; j < 5; j++){
-        		g.drawString(state.getBoard().get(i).get(j).toString(), j*100+100, i*100+100);
+        		if(board.get(i).get(j) == 2){
+        			g.setColor(Color.DARK_GRAY);
+        		} else if(board.get(i).get(j) == 4){
+        			g.setColor(Color.GRAY);
+        		} else if(board.get(i).get(j) == 8){
+        			g.setColor(Color.LIGHT_GRAY);
+        		} else if(board.get(i).get(j) == 16){
+        			g.setColor(Color.BLUE);
+        		} else if(board.get(i).get(j) == 32){
+        			g.setColor(Color.CYAN);
+        		} else if(board.get(i).get(j) == 64){
+        			g.setColor(Color.RED);
+        		} else if(board.get(i).get(j) == 128){
+        			g.setColor(Color.ORANGE);
+        		} else if(board.get(i).get(j) == 256){
+        			g.setColor(Color.YELLOW);
+        		} else if(board.get(i).get(j) == 512){
+        			g.setColor(Color.MAGENTA);
+        		} else if(board.get(i).get(j) == 1024){
+        			g.setColor(Color.PINK);
+        		}
+        		g.drawString(board.get(i).get(j).toString(), j*100+100, i*100+100);
+        		g.setColor(Color.BLACK);
         	}
         }
         
