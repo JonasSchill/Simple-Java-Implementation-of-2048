@@ -5,10 +5,14 @@ import java.awt.Toolkit;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
-
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+/**
+ * 
+ * @author Jonas Schill
+ *
+ */
 public class Board extends JPanel{
 
     private State state;
