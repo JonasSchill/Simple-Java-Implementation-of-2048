@@ -6,6 +6,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class Board extends JPanel{
@@ -17,7 +18,7 @@ public class Board extends JPanel{
         setFocusable(true);
         setBackground(Color.WHITE);
         setDoubleBuffered(true);
-
+        
         state = new State();
     }
 
@@ -52,8 +53,7 @@ public class Board extends JPanel{
         		g.drawString(board.get(i).get(j).toString(), j*100+100, i*100+100);
         		g.setColor(Color.BLACK);
         	}
-        }
-        
+        } 
         Toolkit.getDefaultToolkit().sync();
         g.dispose();
     }
@@ -61,6 +61,28 @@ public class Board extends JPanel{
     private class TAdapter extends KeyAdapter {
         public void keyPressed(KeyEvent e) {
             state.keyPressed(e);
+            repaint();
+            ArrayList<ArrayList<Integer>> board = state.getBoard();
+            for(int i = 0; i < 5; i++){
+            	for(int j = 0; j < 5; j++){
+            		if(board.get(i).get(j) == 8){
+            		        int option = JOptionPane.showConfirmDialog(null, "you win play again?", "you win", JOptionPane.YES_NO_OPTION);
+            		       	if(option == 0){
+            		      		state = new State();
+            		       	} else if(option == 1){
+            		       		System.exit(0);
+            		       	}
+            		}
+            	}
+            }
+            if(state.getRandomEmptyCord().equals(null)){
+            	int option = JOptionPane.showConfirmDialog(null, "you lose play again?", "you lose", JOptionPane.YES_NO_OPTION);
+		       	if(option == 0){
+		      		state = new State();
+		       	} else if(option == 1){
+		       		System.exit(0);
+		       	}
+            }
             repaint();
         }
     }
