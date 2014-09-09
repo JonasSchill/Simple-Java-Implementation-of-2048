@@ -22,7 +22,7 @@ public class Board extends JPanel{
     public Board() {
         addKeyListener(new TAdapter());
         setFocusable(true);
-        setBackground(Color.WHITE);
+        setBackground(new Color(239, 228, 176));
         setDoubleBuffered(true);
         
         state = new State();
@@ -42,25 +42,25 @@ public class Board extends JPanel{
         for(int i = 0; i < 5; i++){
         	for(int j = 0; j < 5; j++){
         		if(board.get(i).get(j) == 2){
-        			g2.setColor(Color.DARK_GRAY);
+        			g2.setColor(new Color(127, 127, 127));
         		} else if(board.get(i).get(j) == 4){
-        			g2.setColor(Color.GRAY);
+        			g2.setColor(new Color(136, 0, 21));
         		} else if(board.get(i).get(j) == 8){
-        			g2.setColor(Color.LIGHT_GRAY);
+        			g2.setColor(new Color(237, 28, 36));
         		} else if(board.get(i).get(j) == 16){
-        			g2.setColor(Color.BLUE);
+        			g2.setColor(new Color(255, 127, 39));
         		} else if(board.get(i).get(j) == 32){
-        			g2.setColor(Color.CYAN);
+        			g2.setColor(new Color(255, 242, 0));
         		} else if(board.get(i).get(j) == 64){
-        			g2.setColor(Color.RED);
+        			g2.setColor(new Color(34, 177, 76));
         		} else if(board.get(i).get(j) == 128){
-        			g2.setColor(Color.ORANGE);
+        			g2.setColor(new Color(0, 162, 232));
         		} else if(board.get(i).get(j) == 256){
-        			g2.setColor(Color.YELLOW);
+        			g2.setColor(new Color(63, 72, 204));
         		} else if(board.get(i).get(j) == 512){
-        			g2.setColor(Color.MAGENTA);
+        			g2.setColor(new Color(163, 73, 164));
         		} else if(board.get(i).get(j) == 1024){
-        			g2.setColor(Color.PINK);
+        			g2.setColor(Color.WHITE);
         		}
         		g2.drawString(board.get(i).get(j).toString(), j*100+100, i*100+100);
         		g2.setColor(Color.BLACK);
