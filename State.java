@@ -17,15 +17,11 @@ public class State {
 	}
 	
 	public void setUp(){
-		ArrayList<Integer> tempRow;
-		Integer tempCell;
 		for(int i = 0; i < 5; i++){
-			tempRow = new ArrayList<Integer>();
+			board.add(new ArrayList<Integer>());
 			for(int j = 0; j < 5; j++){
-				tempCell = new Integer(0);
-				tempRow.add(tempCell);
+				board.get(i).add(0);
 			}
-			board.add(tempRow);
 		}
 		spawnCell();
 		spawnCell();
@@ -33,7 +29,7 @@ public class State {
 	
 	public void spawnCell(){
 		int[] cord = getRandomEmptyCord();
-		if(Math.random() < 0.5){
+		if(Math.random() < 0.9){
 			board.get(cord[0]).set(cord[1], 2);
 		} else {
 			board.get(cord[0]).set(cord[1], 4);
